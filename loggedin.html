@@ -1,0 +1,80 @@
+<html>
+   <head>
+       
+       
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAvQPGpJ_9Dy8IFoHZCNFAc6ApSziDhHqA",
+        authDomain: "exploration-6ccaf.firebaseapp.com",
+        databaseURL: "https://exploration-6ccaf.firebaseio.com",
+        projectId: "exploration-6ccaf",
+        storageBucket: "exploration-6ccaf.appspot.com",
+        messagingSenderId: "528751431048"
+      };
+      firebase.initializeApp(config);
+        
+      // var database = firebase.database();
+    </script>
+       
+<!--        below functions create a user-->
+       <script>
+       
+       var provider = new firebase.auth.GoogleAuthProvider();
+
+        function googleSignout() {
+           firebase.auth().signOut()
+
+           .then(function() {
+              console.log('Signout Succesfull')
+               window.location.href="exploration.html";
+           }, function(error) {
+              console.log('Signout Failed')  
+           });
+//             window.location.href="exploration.html";
+        };
+       
+       </script>
+       
+       <script>
+       
+           function dbInsert(){
+               var catRef = firebase.database().ref("Cats/");
+
+                catRef.set ({
+                   Peeve: {
+                      color: 'Gray',
+                      age: 1
+                   },
+
+                   Eevee: {
+                      color: 'Gray/White',
+                      age: 5
+                   }
+                });
+           };
+           
+           
+       
+       </script>
+       
+
+       
+      <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+      <script type = "text/javascript" src = "index.js"></script>
+   </head>
+	
+   <body>
+
+       <h1>Logged In :)</h1>
+       <h2>Sign Out Below</h2>
+       <button onclick = "googleSignout()">Google Signout</button>
+       <h2>Or Add Cat Info Below</h2>
+       <button onclick = "dbInsert()">Add Info to Database</button>
+       <br><br><br>
+       
+    
+
+   </body>
+</html>
